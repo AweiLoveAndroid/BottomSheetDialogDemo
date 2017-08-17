@@ -1,13 +1,14 @@
 package com.lzw.bottomsheetdialogdemo;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -19,7 +20,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    BottomSheetBehavior behavior;
+    BottomSheetBehavior mBottomSheetBehavior;
+    GestureDetector mGestureDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +35,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button showBottomSheetDialogBtn3 = (Button)findViewById(R.id.btn_show_BottomSheetDialog3);
         Button showBottomSheetDialogFragmentBtn = (Button)findViewById(R.id.btn_show_BottomSheetDialogFragment);
 
+        mBottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
+        mBottomSheetBehavior.setPeekHeight(0);//设置内容栏默认高度
+
         showBottomSheetBtn.setOnClickListener(this);
         showBottomSheetDialogBtn1.setOnClickListener(this);
         showBottomSheetDialogBtn2.setOnClickListener(this);
         showBottomSheetDialogBtn3.setOnClickListener(this);
         showBottomSheetDialogFragmentBtn.setOnClickListener(this);
 
-        behavior = BottomSheetBehavior.from(bottomSheet);
-        behavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+        /*mBottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
                 //这里是bottomSheet状态的改变
@@ -51,8 +55,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //这里是拖拽中的回调，根据slideOffset可以做一些动画
 
             }
-        });
+        });*/
 
+        initGestureDetector();
+    }
+
+    private void initGestureDetector() {
+        //这里使用的是界面手势识别器,可以识别界面的单击事件,来给Behavior设置相应的属性来控制隐藏.
+        mGestureDetector = new GestureDetector(MainActivity.this,
+                new GestureDetector.SimpleOnGestureListener(){
+                    //处理单击事件 -- 控制面板的显示or隐藏
+                    @Override
+                    public boolean onSingleTapConfirmed(MotionEvent e) {
+                        if (mBottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED){
+                            mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                            return true;
+                        }
+                        return super.onSingleTapConfirmed(e);
+                    }
+                });
+    }
+
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        mGestureDetector.onTouchEvent(event);
+        return super.onTouchEvent(event);
     }
 
 
@@ -60,10 +88,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_show_BottomSheet:
-                if (behavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
-                    behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-                } else{
-                    behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                if (mBottomSheetBehavior.getState() == BottomSheetBehavior.STATE_COLLAPSED) {
+                    mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
                 }
                 break;
 
@@ -146,7 +172,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bottomSheetDialog.show();
     }
 
-
+    //使用BottomSheetDialog实现简单分享功能
     private void initBottomSheetDialog3() {
         RecyclerView recyclerView;
         //startActivity(new Intent(MainActivity.this,RecyclerVireWithBottomSheetDialogActivity.class));

@@ -23,9 +23,9 @@
             android:id="@+id/btn_show_BottomSheetDialog1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
             android:background="#3333B5E5"
             android:text="展示BottomSheetDialog,少量数据"
             android:textAllCaps="false" />
@@ -34,9 +34,9 @@
             android:id="@+id/btn_show_BottomSheetDialog2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
             android:background="#3333B5E5"
             android:text="展示BottomSheetDialog，列表形式"
             android:textAllCaps="false" />
@@ -45,9 +45,9 @@
             android:id="@+id/btn_show_BottomSheetDialog3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
             android:background="#3333B5E5"
             android:text="使用BottomSheetDialog实现简单分享功能"
             android:textAllCaps="false" />
@@ -93,12 +93,14 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:gravity="center"
-                    android:text="拍照" />
+                    android:text="拍照"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@android:color/darker_gray" />
+                    android:background="@color/gray" />
 
                 <TextView
                     android:id="@+id/tv2"
@@ -107,7 +109,9 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:gravity="center"
-                    android:text="打开相册" />
+                    android:text="打开相册"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
             </LinearLayout>
 
             <TextView
@@ -117,9 +121,11 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/shape_bg_bottom_dialog"
+                android:background="@drawable/shape_bg_bottom_dialog2"
                 android:gravity="center"
-                android:text="取消" />
+                android:text="取消"
+                android:textColor="@color/light_blue"
+                android:textSize="17sp" />
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
