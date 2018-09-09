@@ -15,6 +15,10 @@ import android.widget.TextView;
 
 import java.util.List;
 
+/**
+ *  RecyclerView适配器
+ *  展示BottomSheetDialog，列表形式
+ */
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
     private List<String> list;

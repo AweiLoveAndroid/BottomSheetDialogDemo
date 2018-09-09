@@ -1,4 +1,4 @@
-package com.lzw.bottomsheetdialogdemo.share;
+package com.lzw.bottomsheetdialogdemo;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -15,12 +15,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.lzw.bottomsheetdialogdemo.R;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 使用BottomSheetDialog实现简单分享功能
  * 描述：带有分享功能的 RecyclerView的适配器
  * @author luzhaowei
  * @email 2497727771@qq.com
@@ -47,7 +46,7 @@ public class ShareRecyclerViewAdapter extends RecyclerView.Adapter<ShareRecycler
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(activity.getLayoutInflater().inflate(R.layout.item_recyclerview2_layout, null));
+        return new ViewHolder(activity.getLayoutInflater().inflate(R.layout.item_recyclerview_layout_share, null));
     }
 
     @Override

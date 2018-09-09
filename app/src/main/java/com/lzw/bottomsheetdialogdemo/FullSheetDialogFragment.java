@@ -10,7 +10,7 @@ import android.view.View;
 
 /**
  * 描述：
- *
+ *  BottomSheetDialogFragment的简单使用
  * @author luzhaowei
  * @email 2497727771@qq.com
  * @time 2017/8/17 14:30
@@ -23,10 +23,11 @@ public class FullSheetDialogFragment extends BottomSheetDialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         BottomSheetDialog dialog = (BottomSheetDialog) super.onCreateDialog(savedInstanceState);
-        View view = View.inflate(getContext(), R.layout.dialog_bottom_sheet1, null);
+        View view = View.inflate(getContext(), R.layout.bottom_sheet_dialog_fragment, null);
         dialog.setContentView(view);
         mBehavior = BottomSheetBehavior.from((View) view.getParent());
         return dialog;
+
     }
 
     @Override

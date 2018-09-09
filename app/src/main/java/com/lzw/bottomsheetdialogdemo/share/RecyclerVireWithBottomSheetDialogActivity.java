@@ -55,7 +55,7 @@ public class RecyclerVireWithBottomSheetDialogActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 BottomSheetDialog dialog = new BottomSheetDialog(RecyclerVireWithBottomSheetDialogActivity.this);
-                View view = View.inflate(RecyclerVireWithBottomSheetDialogActivity.this, R.layout.dialog_bottom_sheet2, null);
+                View view = View.inflate(RecyclerVireWithBottomSheetDialogActivity.this, R.layout.bottom_sheet_dialog_share, null);
                 dialog.setContentView(view);
                 recyclerView = (RecyclerView) dialog.findViewById(R.id.recycler);
                 recyclerView.setLayoutManager(new GridLayoutManager(RecyclerVireWithBottomSheetDialogActivity.this, 3));
@@ -124,7 +124,7 @@ public class RecyclerVireWithBottomSheetDialogActivity extends AppCompatActivity
 
         @Override
         public ViewHolde onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new ViewHolde(getLayoutInflater().inflate(R.layout.item_recyclerview2_layout, null));
+            return new ViewHolde(getLayoutInflater().inflate(R.layout.item_recyclerview_layout_share, null));
         }
 
         @Override
